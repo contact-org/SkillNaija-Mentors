@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillNaija Lead Mentor Recruitment – Unpaid Cohort, Paid Apprenticeship</title>
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4c1d95, #7c3aed);
+            --secondary-gradient: linear-gradient(135deg, #7c3aed, #a855f7);
+            --accent: #e879f9;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --border: #e0e0e0;
+            --purple-light: #f3e8ff;
+            --purple-bg: #faf5ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Body: Times New Roman */
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background: var(--light);
+            color: #2c3e50;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* All Headers: Arial, bold and clean */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            color: #4c1d95;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 800; color: #ffffff !important; }
+        h2 { font-size: 1.9rem; margin: 0 0 20px; position: relative; padding-bottom: 12px; }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 60px; height: 4px;
+            background: var(--secondary-gradient);
+            border-radius: 2px;
+        }
+        h3 { font-size: 1.35rem; color: #7c3aed; margin: 22px 0 14px; font-weight: 600; }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border);
+        }
+
+        header {
+            background: var(--primary-gradient);
+            color: #fff;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.08)"/></svg>') no-repeat bottom;
+            background-size: 100% 30px;
+        }
+
+        header h1 {
+            margin: 0 0 14px;
+            line-height: 1.2;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-family: Arial, sans-serif;
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 38px 42px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section:last-child { border-bottom: none; }
+
+        ul, ol { padding-left: 26px; }
+        li { margin-bottom: 11px; }
+
+        /* Minimal, tasteful use of strong — only for real emphasis */
+        strong {
+            color: #5b21b6;
+            font-weight: 700;
+        }
+
+        /* Niches Grid */
+        .niches {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 26px;
+            margin-top: 24px;
+        }
+        @media (min-width: 768px) {
+            .niches { grid-template-columns: 1fr 1fr; }
+        }
+
+        .niche-category {
+            background: var(--purple-bg);
+            border: 1px solid #e9d5ff;
+            border-radius: 14px;
+            padding: 20px;
+            transition: all 0.25s ease;
+        }
+        .niche-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.18);
+        }
+
+        .niche-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0;
+        }
+        .niche-list li {
+            background: #ede9fe;
+            margin: 6px 0;
+            padding: 9px 15px;
+            border-radius: 9px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #5b21b6;
+            border-left: 4px solid #7c3aed;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(124, 58, 237, 0.1);
+        }
+        th {
+            background: var(--primary-gradient);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+            padding: 18px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        td {
+            padding: 18px;
+            border-bottom: 1px solid var(--border);
+            font-family: "Times New Roman", Times, serif;
+        }
+        tr:nth-child(even) td { background: #faf8ff; }
+        tr:hover td { background: #f3e8ff; }
+        .highlight { background: linear-gradient(120deg, #e9d5ff, #ddd6fe) !important; }
+
+        /* Alerts & Boxes */
+        .unpaid-alert {
+            background: linear-gradient(135deg, #fdf4ff, #f3e8ff);
+            border: 2px dashed #c084fc;
+            color: #7c3aed;
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin: 24px 0;
+        }
+        .unpaid-alert::before { content: 'Star'; margin-right: 10px; font-size: 1.4rem; }
+
+        .deadline {
+            background: linear-gradient(135deg, #fee7fc, #f8d5f5);
+            color: #be185d;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            margin: 24px 0;
+            border-left: 6px solid #ec4899;
+            font-family: Arial, sans-serif;
+        }
+
+        .apply-box {
+            background: linear-gradient(135deg, #fdf8ff, #f5efff);
+            border: 1px solid #e9d5ff;
+            border-left: 7px solid var(--accent);
+            padding: 24px;
+            border-radius: 14px;
+            margin: 26px 0;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: block;
+            max-width: 300px;
+            margin: 26px auto;
+            text-align: center;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+            background: linear-gradient(135deg, #9333ea, #a855f7);
+        }
+
+        .google-form-container {
+            background: #ffffff;
+            border: 1px solid #e9d5ff;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 32px 0;
+            box-shadow: 0 8px 22px rgba(124, 58, 237, 0.12);
+            text-align: center;
+        }
+        .form-intro {
+            font-family: Arial, sans-serif;
+            font-size: 1.15rem;
+            color: #4c1d95;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #bdc3c7;
+            text-align: center;
+            padding: 36px 20px;
+            font-size: 0.98rem;
+        }
+        footer a { color: #c084fc; text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+        .tagline { font-style: italic; color: #9ca3af; margin-top: 14px; font-size: 0.92rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Become a SkillNaija Lead Mentor</h1>
+            <p>Unpaid Cohort Training • Paid Physical Apprenticeship • Legacy of Impact</p>
+        </header>
+
+        <!-- Intro -->
+        <div class="section">
+            <p>SkillNaija is launching its flagship Business Startup Cohort to empower <strong>1,000 African youths</strong> with proven, life-changing business models. We are recruiting <strong>110 visionary entrepreneurs</strong> — one per niche — to deliver free mentorship during the cohort and charge premium fees for hands-on training at their physical locations.</p>
+            <p>This is a legacy partnership. You mentor for free during the cohort. In return, you gain 1,000 new customers, lifelong visibility, and the pride of shaping Africa’s future.</p>
+        </div>
+
+        <!-- Who We're Looking For -->
+        <div class="section">
+            <h2>Who We're Looking For</h2>
+            <ul>
+                <li>Minimum <strong>3 years of profitable operations</strong> in your niche</li>
+                <li><strong>CAC-registered business</strong> (certificate required)</li>
+                <li><strong>Physical business location</strong> capable of hosting 10–20 trainees per batch</li>
+                <li>Demonstrated scalability and customer success</li>
+                <li>Passion for mentoring the next generation and building economic freedom</li>
+            </ul>
+        </div>
+
+        <!-- Role -->
+        <div class="section">
+            <h2>Your Role as Lead Mentor</h2>
+            <ol>
+                <li>Deliver <strong>4 Free Introductory Masterclasses</strong> (2 hrs each) during the 6-week cohort<br><em>No payment for cohort training — this is your gift to Africa’s youth</em></li>
+                <li>Showcase & Sell Your Business Live<br>Pitch to 1,000+ motivated trainees — convert on the spot</li>
+                <li>Host Paid Physical Training<br>Charge <strong>₦50,000–₦100,000 per trainee</strong> • Keep <strong>60% of revenue</strong> (physical trainings only)</li>
+                <li>Shared Virtual Masterclass Revenue<br><strong>₦10,000–₦50,000 per trainee</strong> • Keep <strong>60% of revenue</strong></li>
+                <li>Mentorship Contract Lasts For One Year<br>Highly renewable based on performance</li>
+            </ol>
+            <div class="unpaid-alert">Cohort Training is UNPAID — You Earn from Sales, Apprenticeships & Eternal Gratitude</div>
+        </div>
+
+        <!-- Niches -->
+        <div class="section">
+            <h2>110 Exclusive Niche Mentorships (1 Mentor Per Niche)</h2>
+            <div class="niches">
+                <div class="niche-category">
+                    <h3>1. Agriculture & Food Production</h3>
+                    <ul class="niche-list">
+                        <li>1. Poultry Farming</li><li>2. Fish Farming</li><li>3. Snail Farming</li><li>4. Vegetable Farming</li><li>5. Cassava Processing</li>
+                        <li>6. Palm Oil Production</li><li>7. Rice Milling</li><li>8. Maize Farming</li><li>9. Cocoa Processing</li><li>10. Yam Farming</li>
+                        <li>11. Mushroom Farming</li><li>12. Beekeeping</li><li>13. Fruit Juice Production</li><li>14. Plantain Chips</li><li>15. Spice Packaging</li>
+                        <li>16. Goat/Sheep Rearing</li><li>17. Rabbit Farming</li><li>18. Herb Farming</li><li>19. Organic Fertilizer</li><li>20. Seedling Nursery</li>
+                    </ul>
+                </div>
+                <div class="niche-category">
+                    <h3>2. Food Services & Hospitality</h3>
+                    <ul class="niche-list">
+                        <li>21. Fast Food/Buka</li><li>22. Baking Business</li><li>23. Catering Services</li><li>24. Food Delivery</li><li>25. Ice Block Production</li>
+                        <li>26. Fruit/Veggie Vending</li><li>27. Suya Business</li><li>28. Smoothie Bar</li><li>29. Event Catering</li><li>30. Budget Guesthouse</li>
+                        <li>31. Barbing Salon</li><li>32. Beauty Salon</li><li>33. Laundry Services</li><li>34. Car Wash</li>
+                    </ul>
+                </div>
+                <div class="niche-category">
+                    <h3>3. Retail & Trading</h3>
+                    <ul class="niche-list">
+                        <li>35. POS Agency</li><li>36. Phone Accessories</li><li>37. Okrika Sales</li><li>38. Mini Importation</li><li>39. Fashion Boutique</li>
+                        <li>40. Grocery Store</li><li>41. Perfume Oils</li><li>42. Skincare Sales</li><li>43. Baby Products</li><li>44. Electronics Repair</li>
+                        <li>45. Bookshop</li><li>46. Fabric Sales</li><li>47. Shoe Resale</li><li>48. Jewelry Stall</li><li>49. Cosmetics Vending</li><li>50. Stationery</li>
+                    </ul>
+                </div>
+                <div class="niche-category">
+                    <h3>4. Tech & Digital Services</h3>
+                    <ul class="niche-list">
+                        <li>51. Freelance Writing</li><li>52. Graphic Design</li><li>53. Web Development</li><li>54. Social Media Management</li><li>55. App Consultancy</li>
+                        <li>56. Laptop Repair</li><li>57. Online Tutoring</li><li>58. Digital Marketing</li><li>59. Blogging/Vlogging</li><li>60. Affiliate Marketing</li>
+                        <li>61. E-commerce Store</li><li>62. Fintech Agent</li><li>63. Cybersecurity</li><li>64. AI Prompt Engineering</li><li>65. Podcast Production</li>
+                    </ul>
+                </div>
+                <div class="niche-category">
+                    <h3>5–12. Real Estate, Transport, Energy, Health, Education, Creative, Manufacturing, Others</h3>
+                    <ul class="niche-list">
+                        <li>66. Airbnb Management</li><li>67. Property Brokerage</li><li>72. Ride-Hailing/Dispatch</li><li>77. Solar Installation</li>
+                        <li>81. Fitness Coaching</li><li>86. Skill Academy</li><li>90. Event Planning</li><li>95. Soap Making</li><li>100. Pet Grooming</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="section">
+            <h2>Your Legacy & Business Gains</h2>
+            <table>
+                <thead><tr><th>Opportunity</th><th>Impact</th></tr></thead>
+                <tbody>
+                    <tr class="highlight"><td>1,000+ New Leads</td><td>Direct exposure to motivated, pre-qualified youth</td></tr>
+                    <tr><td>Live Sales Pitch</td><td>Sell products/services during training sessions</td></tr>
+                    <tr class="highlight"><td>Paid Apprenticeship</td><td>Charge ₦50k–₦150k per trainee at your location</td></tr>
+                    <tr><td>Coaching Pipeline</td><td>Paid virtual programs on shared revenue basis on our platform</td></tr>
+                    <tr class="highlight"><td>SkillNaija Certification</td><td>“Certified Mentor” badge + lifetime referrals</td></tr>
+                    <tr><td>Media & PR</td><td>Featured in documentaries, press, and success stories</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Revenue Model -->
+        <div class="section">
+            <h2>Revenue Model</h2>
+            <ul>
+                <li>Cohort Training: Free (your social impact)</li>
+                <li>Physical Training: You set fee • Keep 60% revenue</li>
+                <li>Product Sales: Sell directly to trainees</li>
+                <li>Revenue share for paid virtual masterclasses with SkillNaija</li>
+            </ul>
+        </div>
+
+        <!-- Apply Now -->
+        <div class="section">
+            <h2>Apply Now – Secure Your Niche</h2>
+            <div class="deadline">
+                <p>Application Deadline:</p>
+                    <strong>December 30, 2025</strong><br></p>
+            <p></p>
+            
+                Cohort Launch: <strong>January 2026</strong>
+            </div>
+            <div class="google-form-container">
+                <p class="form-intro">Complete the form below to apply as a Lead Mentor. Only 1 spot per niche.</p>
+                <a href="https://forms.gle/fPCrTGQ1y4wFPHyeA" target="_blank" rel="noopener" class="btn">Apply via Google Form</a>
+            </div>
+        </div>
+
+        <!-- Email Option -->
+        <div class="section">
+            <h2>Or Apply via Email</h2>
+            <div class="apply-box">
+                <p>Email: <strong>skillnaijacare@gmail.com</strong><br>
+                Subject: <strong>“Mentor Application – [Your Niche] – [Your Name]”</strong></p>
+                <p>Attach:</p>
+                <ol>
+                    <li>CAC Certificate</li>
+                    <li>2-minute video introduction</li>
+                    <li>2 Photos of your physical location (Interior & exterior)</li>
+                    <li>3 customer testimonials</li>
+                    <li>Proposed fee for post-cohort training</li>
+                </ol>
+            </div>
+            <p style="text-align: center;">
+                <a href="mailto:skillnaijacare@gmail.com?subject=Mentor%20Application%20–%20[Your%20Niche]%20–%20[Your%20Name]" class="btn">Send Application Email</a>
+            </p>
+        </div>
+
+        <!-- Closing -->
+        <div class="section">
+            <h2>Why Mentor with SkillNaija?</h2>
+            <p style="text-align: center; font-size: 1.25rem; line-height: 1.8; color: #4c1d95; font-style: italic;">
+                You give <strong>8 hours of wisdom</strong> for free.<br>
+                You gain <strong>1,000 grateful students, lifelong visibility, and a legacy that echoes</strong>.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>SkillNaija</strong> — Building Africa’s Future, One Mentor at a Time</p>
+        <p>
+            <a href="mailto:skillnaijacare@gmail.com">Contact us: skillnaijacare@gmail.com</a> | 
+            <a href="https://wa.me/2349030001234">WhatsApp: 0903 720 1432</a>
+        </p>
+        <p class="tagline">One mentor per niche. Your legacy starts here.</p>
+    </footer>
+</body>
+</html>
